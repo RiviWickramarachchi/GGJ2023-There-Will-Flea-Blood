@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{778c27b6-41f5-4f89-aacd-b3e1b75af21a}">
+		<property name="assetPath">
+			<value>i-got-a-stick-instrumental-feat-bryan-teoh-by-kevin-macleod-from-filmmusic-io-preview-quality.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>31.242448979591838</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b830749-9e2a-43ab-a743-5aba7ede3bce}</destination>
+		</relationship>
+	</object>
+</objects>
