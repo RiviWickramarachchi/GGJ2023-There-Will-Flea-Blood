@@ -606,7 +606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241618522052103504}
         m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: QuitManager
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
