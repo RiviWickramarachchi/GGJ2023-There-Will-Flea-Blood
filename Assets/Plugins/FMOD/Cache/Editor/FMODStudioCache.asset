@@ -108,33 +108,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8500
---- !u!114 &-2469137701176423171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Player_2_Jump
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Player_2_Jump
-  Guid:
-    Data1: -1447185136
-    Data2: 1321740854
-    Data3: -1559668311
-    Data4: 1448069970
-  Banks:
-  - {fileID: 6301593107841331688}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 300
 --- !u!114 &-42914549113814756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,17 +155,44 @@ MonoBehaviour:
   - {fileID: -8265915564268906820}
   - {fileID: -7226469439960778106}
   - {fileID: -5925648099329156207}
-  - {fileID: -2469137701176423171}
   - {fileID: -8416564167818123636}
   - {fileID: -42914549113814756}
   - {fileID: 6147359692851958131}
+  - {fileID: 2238992079714662734}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6301593107841331688}
   StringsBanks:
   - {fileID: 6004246859673971333}
-  cacheTime: 638111378112977252
+  cacheTime: 638111401717781235
   cacheVersion: 131593
+--- !u!114 &2238992079714662734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/LosePoint
+  m_EditorClassIdentifier: 
+  Path: event:/Player/LosePoint
+  Guid:
+    Data1: -1217020086
+    Data2: 1121271042
+    Data3: 336027066
+    Data4: 514318463
+  Banks:
+  - {fileID: 6301593107841331688}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3500
 --- !u!114 &6004246859673971333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,10 +208,10 @@ MonoBehaviour:
   Path: C:/Users/SPS/Desktop/ThereWillFleaBlood_GGJ23/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638111378112977252
+  lastModified: 638111401717781235
   FileSizes:
   - Name: Desktop
-    Value: 1130
+    Value: 1122
   Exists: 1
 --- !u!114 &6147359692851958131
 MonoBehaviour:
@@ -255,10 +255,10 @@ MonoBehaviour:
   Path: C:/Users/SPS/Desktop/ThereWillFleaBlood_GGJ23/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638111378112957263
+  lastModified: 638111401717761237
   FileSizes:
   - Name: Desktop
-    Value: 2722112
+    Value: 2734048
   Exists: 1
 --- !u!114 &6989671405575738110
 MonoBehaviour:
