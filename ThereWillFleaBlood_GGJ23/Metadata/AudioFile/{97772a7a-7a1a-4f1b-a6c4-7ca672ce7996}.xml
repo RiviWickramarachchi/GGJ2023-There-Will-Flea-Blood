@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{97772a7a-7a1a-4f1b-a6c4-7ca672ce7996}">
+		<property name="assetPath">
+			<value>there-it-is-by-kevin-macleod-from-filmmusic-io-preview-quality.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>37.668571428571425</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b830749-9e2a-43ab-a743-5aba7ede3bce}</destination>
+		</relationship>
+	</object>
+</objects>
