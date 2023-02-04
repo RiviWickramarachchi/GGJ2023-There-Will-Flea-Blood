@@ -164,7 +164,7 @@ MonoBehaviour:
   - {fileID: 6301593107841331688}
   StringsBanks:
   - {fileID: 6004246859673971333}
-  cacheTime: 638111401717781235
+  cacheTime: 638111452742491965
   cacheVersion: 131593
 --- !u!114 &2238992079714662734
 MonoBehaviour:
@@ -208,7 +208,7 @@ MonoBehaviour:
   Path: C:/Users/SPS/Desktop/ThereWillFleaBlood_GGJ23/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638111401717781235
+  lastModified: 638111452742491965
   FileSizes:
   - Name: Desktop
     Value: 1122
@@ -255,10 +255,10 @@ MonoBehaviour:
   Path: C:/Users/SPS/Desktop/ThereWillFleaBlood_GGJ23/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638111401717761237
+  lastModified: 638111452742471969
   FileSizes:
   - Name: Desktop
-    Value: 2734048
+    Value: 2734208
   Exists: 1
 --- !u!114 &6989671405575738110
 MonoBehaviour:
