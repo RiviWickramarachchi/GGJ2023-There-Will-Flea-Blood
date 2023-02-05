@@ -169,4 +169,12 @@ public class PlayerController : MonoBehaviour
 		inputProvider.FindAction("Suck Blood").Disable();
 
 	}
+
+	void OnCollisionEnter(Collision collision)
+    {
+       if(collision.gameObject.CompareTag("Hand")) {
+		//player dies and has to be spawned again 
+		Debug.Log("Ded");
+	   }
+    }
 }
