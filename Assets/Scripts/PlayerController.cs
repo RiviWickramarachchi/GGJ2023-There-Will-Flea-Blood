@@ -8,14 +8,12 @@ using System;
 public class PlayerController : MonoBehaviour
 {
 
-	private Rigidbody rb;
-	[SerializeField] private float jumpForce;
-	[SerializeField] private float slideOnLand;
 	[SerializeField] private InputActionAsset inputProvider;
 	[SerializeField] private float moveSpeed = 6f;
 	[SerializeField] private float movementForce = 1f;
 	[SerializeField] private Camera playerCamera;
 	private InputAction move;
+	private Rigidbody rb;
 	private Vector3 forceDirection = Vector3.zero;
 	private CharacterController controller;
 	private Vector2 moveVals;
@@ -23,8 +21,10 @@ public class PlayerController : MonoBehaviour
 	private bool playerMovementLocked = false;
 	public float turnSmoothTime = 0.1f;
 	float turnSmoothVelocity;
-    
+    private Animator anim;
 	public PlayerStates currentState;
+
+	public static event Action<bool> OnScoreUpdate;
 	public enum PlayerStates
     {
 		IDLE,
@@ -40,12 +40,13 @@ public class PlayerController : MonoBehaviour
 			switch(currentState)
             {
 				case PlayerStates.IDLE:
-					//anim.Play("Idle");
+					anim.SetTrigger("Idle");
 					break;
 				case PlayerStates.WALK:
-					//anim.Play("Movement");
+					anim.SetTrigger("Move");
 					break;
 				case PlayerStates.SUCK:
+					anim.SetTrigger("Sucking");
 					break;
 			}
         }
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
 	{
+		anim = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody>();
 		rb.freezeRotation = true;
 		controller = GetComponent<CharacterController>();
@@ -70,15 +72,11 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
-		if (currentState == PlayerStates.SUCK)
-		{
-			Debug.Log("sucking");
-		}
+
 	}
 
 	void FixedUpdate()
 	{
-		
 		MoveCharacter();
 		LookAt();
 	}
@@ -89,11 +87,13 @@ public class PlayerController : MonoBehaviour
         {
 			CurrentState = PlayerStates.SUCK;
 			playerMovementLocked = true;
+			OnScoreUpdate?.Invoke(true);
 		}
 		if(context.canceled)
         {
 			CurrentState = PlayerStates.IDLE;
 			playerMovementLocked = false;
+			OnScoreUpdate?.Invoke(false);
         }
 	}
 
@@ -108,6 +108,9 @@ public class PlayerController : MonoBehaviour
 				CurrentState = PlayerStates.WALK;
 				Debug.Log("moving");
 
+			}
+			else { 
+				CurrentState = PlayerStates.IDLE;
 			}
 		}
 	}
@@ -141,7 +144,6 @@ public class PlayerController : MonoBehaviour
 			this.rb.rotation = Quaternion.Euler(0, angle, 0);
 
 		}
-			
         else
         {
 			rb.angularVelocity = Vector3.zero;
@@ -162,85 +164,17 @@ public class PlayerController : MonoBehaviour
 		return right.normalized;
 	}
 
-	/*
-	if (Input.GetMouseButtonDown(1))
-	{
-		TryJump();
-	}
-}
-
-public void TryJump()
-{
-	if (!_isGrounded) return;
-	Debug.Log("Do jump tried");
-	DoJump();
-}
-
-private void DoJump()
-{
-	_horizontalJumpVelocity = agent.velocity;
-	DisableNavMeshAgent();
-	EnableRB();
-	_isGrounded = false;
-	rb.AddForce(new Vector3(_horizontalJumpVelocity.x, jumpForce, _horizontalJumpVelocity.z), ForceMode.Impulse);
-}
-
-private void SetUpRigidbody()
-{
-	rb = GetComponent<Rigidbody>();
-	if (rb == null)
-	{
-		gameObject.AddComponent<Rigidbody>();
-		rb = GetComponent<Rigidbody>();
-	}
-	DisableRB();
-	rb.freezeRotation = true;
-}
-
-// Effectively enables rigidbody.
-private void EnableRB()
-{
-	rb.isKinematic = false;
-	rb.useGravity = true;
-}
-
-// Effectively disables rigidbody. Technically still enabled but won't do much.
-private void DisableRB()
-{
-	rb.isKinematic = true;
-	rb.useGravity = false;
-}
-
-private void EnableNavMeshAgent()
-{
-	agent.Warp(transform.position);
-	if(Mathf.Abs(_horizontalJumpVelocity.x) > 0f || Mathf.Abs(_horizontalJumpVelocity.z) > 0f) agent.SetDestination(transform.position + (transform.forward * slideOnLand));
-	agent.updatePosition = true;
-	agent.updateRotation = true;
-	agent.isStopped = false;
-}
-
-private void DisableNavMeshAgent()
-{
-	agent.updatePosition = false;
-	agent.updateRotation = false;
-	agent.isStopped = true;
-}
-
-private void OnCollisionEnter(Collision other)
-{
-	Debug.Log(other.collider.tag);
-	if (other.collider != null && other.collider.tag == "Ground" && !_isGrounded && rb.velocity.y <= 0f)
-	{ // Condition assumes all ground is tagged with "Ground".
-		Debug.Log("Condition met!");
-		DisableRB();
-		EnableNavMeshAgent();
-	*/
-	//_isGrounded = true;
-
 	void OnDisable() {
 		inputProvider.FindAction("Directional Movements").Disable();
 		inputProvider.FindAction("Suck Blood").Disable();
 
 	}
+
+	void OnCollisionEnter(Collision collision)
+    {
+       if(collision.gameObject.CompareTag("Hand")) {
+		//player dies and has to be spawned again 
+		Debug.Log("Ded");
+	   }
+    }
 }
